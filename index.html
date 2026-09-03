@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="theme-color" content="#0C0A09">
+  <title>SPACE WAR 0.1.6 — Palm homage</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="app">
+    <section id="screen-start" class="screen">
+      <canvas id="start-bg" aria-hidden="true"></canvas>
+      <header class="hero">
+        <p class="eyebrow">night grid · 0.1.6</p>
+        <h1>SPACE WAR</h1>
+        <p class="sub">Palm homage</p>
+        <p class="disclaimer">Not a Paramount product</p>
+      </header>
+      <p class="rank-chip" id="rank-chip"></p>
+      <h2 class="choose">Choose your hull</h2>
+      <div id="class-list" class="class-list" role="listbox" aria-label="Ship class"></div>
+      <p class="blurb" id="class-blurb">Five original hulls. No borrowed names.</p>
+      <button type="button" id="btn-engage" class="btn-engage" disabled>Engage</button>
+      <p class="how">Tap a course hex, tap a fire hex (or skip), then GO. Every ship moves at once. Lead the shot.</p>
+    </section>
+    <section id="screen-game" class="screen hidden">
+      <header class="game-top">
+        <div class="brand">
+          <strong>SPACE WAR</strong>
+          <span>Palm homage · 0.1.6</span>
+        </div>
+        <div id="turn-label" class="turn-label">Turn 1</div>
+      </header>
+      <p id="phase-hint" class="phase-hint">Plot your course</p>
+      <div class="board-wrap">
+        <canvas id="board" width="390" height="460"></canvas>
+      </div>
+      <p id="log" class="log">Awaiting orders.</p>
+      <div class="hud">
+        <div class="hud-row stats">
+          <div class="stat hull">
+            <label>Hull</label>
+            <div class="hp-track"><div id="hp-fill"></div></div>
+            <span id="hp-text">100</span>
+          </div>
+          <div class="stat">
+            <label>Torpedoes</label>
+            <div id="torp-pips" class="pips"></div>
+          </div>
+        </div>
+        <div class="hud-row picks">
+          <button type="button" id="btn-replot" class="chip">Course <em id="move-readout">—</em></button>
+          <span id="fire-readout" class="chip ghost">Fire <em id="fire-text">—</em></span>
+        </div>
+        <div class="hud-row weapons">
+          <div class="toggle" role="group" aria-label="Weapon">
+            <button type="button" id="btn-phaser">Phaser</button>
+            <button type="button" id="btn-torp">Torpedo</button>
+          </div>
+        </div>
+        <div class="hud-row actions">
+          <button type="button" id="btn-skip" class="btn-skip">Skip fire</button>
+          <button type="button" id="btn-go" class="btn-go" disabled>GO</button>
+        </div>
+      </div>
+    </section>
+    <aside id="god-panel" class="god-panel hidden" aria-label="God mode">
+      <p class="god-title">GOD 0.1.6</p>
+      <label>Rank
+        <select id="god-rank"></select>
+      </label>
+      <button type="button" id="god-heal">Full hull</button>
+      <button type="button" id="god-torps">Fill torps</button>
+      <button type="button" id="god-ghost">Ghost CPU</button>
+      <button type="button" id="god-win">Force win</button>
+      <button type="button" id="god-lose">Force lose</button>
+    </aside>
+    <div id="overlay" class="overlay hidden" role="dialog" aria-modal="true">
+      <div class="panel">
+        <p class="eyebrow" id="end-kicker"></p>
+        <h2 id="end-title"></h2>
+        <p id="end-flavor"></p>
+        <button type="button" id="btn-again" class="btn-engage">New battle</button>
+      </div>
+    </div>
+  </div>
+  <script src="game.js"></script>
+</body>
+</html>
